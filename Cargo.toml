@@ -1,0 +1,12 @@
+[package]
+name = "rusttubedl"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+actix-web = "4.0"
+tera = "1.12.1"
+serde = { version = "1.0.197", features = ["derive"] }
+rustube = "0.6.0"

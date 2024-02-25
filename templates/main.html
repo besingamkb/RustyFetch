@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elegant Form</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        .disable-button {
+            background-color: #d1d5db !important; /* Set grey background color */
+            cursor: not-allowed; /* Change cursor to not-allowed */
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100 flex justify-center items-center h-screen">
+<div>
+    <div class="max-w-md w-full bg-white p-8 rounded shadow-md">
+        <h2 class="text-2xl font-bold mb-6 text-center">Youtube Video Downloader</h2>
+        <form id="downloadForm" method="POST" action="/download">
+            <div class="mb-4">
+                <label for="inputField" class="block text-gray-700 text-sm font-bold mb-2">Enter youtube video link below</label>
+                <input id="inputField" name="youtube_link" type="text" placeholder="https://www.youtube.com/watch?v=23viaf1e0O0" class="w-full px-3 py-2 placeholder-gray-400 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-200 focus:border-indigo-500">
+                <p id="errorMessage" class="text-red-500 text-xs italic hidden">Please enter a valid YouTube link.</p>
+            </div>
+            <button id="downloadButton" type="submit" class="w-full bg-indigo-500 text-white py-2 px-4 rounded-md hover:bg-indigo-600 transition duration-300 flex items-center justify-center">
+                <span id="buttonText">Download</span>
+                <svg id="loadingIcon" class="hidden animate-spin ml-2 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.373A8 8 0 0112 4v4c-3.386 0-6.42 1.73-8.187 4.373L6 17.373z"></path>
+                </svg>
+            </button>
+        </form>
+    </div>
+
+    <div class="max-w-md w-full bg-gray-200 p-4 rounded mt-4">
+        <p id="downloadStatus" class="text-sm text-gray-700">After clicking the button, refrain from reloading the page as the download process is underway. The speed of the download relies on your internet connection.</p>
+    </div>
+
+</div>
+
+<script>
+    const form = document.getElementById('downloadForm');
+    const button = document.getElementById('downloadButton');
+    const downloadInfo = document.getElementById('downloadStatus');
+    const buttonText = document.getElementById('buttonText');
+    const loadingIcon = document.getElementById('loadingIcon');
+    const inputField = document.getElementById('inputField');
+    const errorMessage = document.getElementById('errorMessage');
+
+    form.addEventListener('submit', function (event) {
+        event.preventDefault();
+        if (validateYouTubeUrl(inputField.value)) {
+            button.disabled = true; // Disable button
+            button.classList.add('disable-button'); // Change button style to greyish
+            buttonText.textContent = 'Downloading'; // Change button text
+            loadingIcon.classList.remove('hidden'); // Show loading icon
+            errorMessage.classList.add('hidden'); // Hide error message
+            this.submit();
+        } else {
+            errorMessage.classList.remove('hidden'); // Show error message
+        }
+    });
+
+    function validateYouTubeUrl(url) {
+        // Regular expression to validate YouTube URL
+        const youtubePattern = /^(http(s)?:\/\/)?((w){3}.)?youtu(be|.be)?(\.com)?\/.+/;
+        return youtubePattern.test(url);
+    }
+</script>
+</
