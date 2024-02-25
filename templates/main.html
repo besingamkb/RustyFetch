@@ -4,7 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Elegant Form</title>
+    <title>Youtube Video Downloader - Download Videos Easily</title>
+    <meta name="description" content="Download YouTube videos easily with this Youtube Video Downloader. Simply paste the video link and start downloading your favorite videos in no time.">
+    <meta name="keywords" content="Youtube Video Downloader, Download YouTube videos, YouTube downloader, video download">
+    <meta name="author" content="Mark Kevin Besinga">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <style>
         .disable-button {
@@ -37,13 +40,12 @@
     <div class="max-w-md w-full bg-gray-200 p-4 rounded mt-4">
         <p id="downloadStatus" class="text-sm text-gray-700">After clicking the button, refrain from reloading the page as the download process is underway. The speed of the download relies on your internet connection.</p>
     </div>
-
 </div>
 
 <script>
     const form = document.getElementById('downloadForm');
     const button = document.getElementById('downloadButton');
-    const downloadInfo = document.getElementById('downloadStatus');
+    // const downloadInfo = document.getElementById('downloadStatus');
     const buttonText = document.getElementById('buttonText');
     const loadingIcon = document.getElementById('loadingIcon');
     const inputField = document.getElementById('inputField');
@@ -69,4 +71,5 @@
         return youtubePattern.test(url);
     }
 </script>
-</
+</body>
+</html>

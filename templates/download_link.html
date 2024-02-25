@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download Link</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        /* Additional styles for specific elements */
+        .download-link:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100 flex justify-center items-center h-screen">
+<div class="container max-w-2xl bg-white p-8 rounded shadow-md">
+    <h1 class="text-3xl text-gray-800 mb-4">Thank You!</h1>
+    <p class="text-gray-700 mb-4">Your download is ready. Click the button below to download the file:</p>
+    <a href="{{ download_link }}" id="downloadButton" class="download-link block bg-indigo-500 text-white text-center py-2 px-4 rounded-md transition duration-300 hover:bg-blue-600">Download Now</a>
+    <p class="text-gray-700 mt-4">Please note: After clicking the download button, ensure not to reload the page as the download process initiates. The download speed may vary depending on your internet connection.</p>
+</div>
+
+<script>
+    // Get the download button element
+    const downloadButton = document.getElementById('downloadButton');
+
+    // Add click event listener to the download button
+    downloadButton.addEventListener('click', function(event) {
+        // Prevent default action (following the link)
+        // event.preventDefault();
+
+        // Redirect to home page ("/") after 3 seconds
+        setTimeout(function() {
+            window.location.href = "/";
+        }, 3000); // 3 seconds in milliseconds
+    });
+</script>
+</body>
+
+</html>

@@ -10,3 +10,5 @@ actix-web = "4.0"
 tera = "1.12.1"
 serde = { version = "1.0.197", features = ["derive"] }
 rustube = "0.6.0"
+actix-files = "0.4.0"
+urlencoding = "2.1.3"
